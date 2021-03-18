@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Corona Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<div class="container">
+    <body>
+    <div class="container">
+        <h1>Corona Virus Tracker</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <div class="jumbotron">
+                <h1 class="display-4">The World</h1>
+                <h3 class="display-4" th:text="${totalReportedCases}"></h3>
+                <p class="lead">Total cases reported as of Today </p>
+
+                <h4>
+                    <span>Total Death :</span><span th:text="${totalDeathCases}"></span>
+                </h4>
+
+                <h4>
+                    <span>Total New Cases today :</span><span th:text="${totalNewDeathCases}"> </span>
+                </h4>
+
+
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="jumbotron">
+                <h1 class="display-4">Bangladesh</h1>
+                <h3 class="display-4" th:text="${bdTotalReportedCase}"></h3>
+                <p class="lead">Total Case Reported in Bangladesh</p>
+
+                <h4>
+                    <span>Total Death :</span><span th:text="${bangladeshTotalDeathCase}"></span>
+                </h4>
+
+                <h4>
+                    <span>Total New Cases today :</span><span th:text="${bdTotalNewCases}"> </span>
+                </h4>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Country</th>
+            <th>State</th>
+            <th>Total Cases Reported</th>
+            <th>Infected Today</th>
+
+        </tr>
+        <tr th:each="locationStat : ${locationStats}">
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.latestTotalCase}">0</td>
+            <td th:text="${locationStat.difFromPreviousDay}">0</td>
+
+        </tr>
+    </table>
+    </body>
+</div>
+bangladeshTotalDeathCase
